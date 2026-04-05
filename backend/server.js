@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 
 import connectToDB from "./lib/db.js";
 import authRoutes from "./routes/auth.routes.js"
+import productRoutes from "./routes/product.routes.js"
 
 dotenv.config();
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json()); // Middleware to parse JSON bodies from incoming reques
 app.use(cookieParser()); // Middleware to parse cookies from incoming requests, making them available in req.cookies
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
     console.log("Server is running on http://localhost:" + PORT);
