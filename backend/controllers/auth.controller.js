@@ -1,5 +1,6 @@
-import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
+
+import User from "../models/user.model.js";
 import { redis } from "../lib/redis.js";
 
 const generateTokens = (userId) => {
