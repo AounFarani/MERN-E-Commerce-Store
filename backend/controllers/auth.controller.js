@@ -52,7 +52,7 @@ export const signUp = async (req, res) => {
             role: user.role
         });
     } catch (error) {
-        console.log("Error in Sign Up controller", error.message);
+        console.error("Error in Sign Up controller", error.message);
         res.status(500).json({ message: error.message });
     }
 }
@@ -76,7 +76,7 @@ export const logIn = async (req, res) => {
             res.status(401).json({ message: "Invalid email or password" });
         }
     } catch (error) {
-        console.log("Error in Log In controller", error.message);
+        console.error("Error in Log In controller", error.message);
         res.status(500).json({ message: error.message });
     }
 }
@@ -92,7 +92,7 @@ export const logOut = async (req, res) => {
         res.clearCookie("refreshToken");
         res.status(200).json({ message: "Logged Out Successfully" });
     } catch (error) {
-        console.log("Error in Log Out controller", error.message);
+        console.error("Error in Log Out controller", error.message);
         res.status(500).json({ message: error.message });
     }
 }
@@ -122,7 +122,7 @@ export const refreshAccessToken = async (req, res) => {
 
         res.status(200).json({ message: "Access token refreshed successfully" });
     } catch (error) {
-        console.log("Error in Refresh Access Token controller", error.message);
+        console.error("Error in Refresh Access Token controller", error.message);
         res.status(500).json({ message: error.message });
     }
 }
@@ -135,7 +135,7 @@ export const getUserProfile = async (req, res) => {
         }
         res.status(200).json(user);
     } catch (error) {
-        console.log("Error in Get User Profile controller", error.message);
+        console.error("Error in Get User Profile controller", error.message);
         res.status(500).json({ message: error.message });
     }
 }

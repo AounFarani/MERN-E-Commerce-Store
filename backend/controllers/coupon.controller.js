@@ -5,7 +5,7 @@ export const getCoupon = async (req, res) => {
         const coupon = await Coupon.findOne({ userId: req.user._id, isActive: true });
         res.json(coupon || null);
     } catch (error) {
-        console.log("Error in getCoupon Controller", error.message);
+        console.error("Error in getCoupon Controller", error.message);
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 }
@@ -31,7 +31,7 @@ export const validateCoupon = async (req, res) => {
             discountPercentage: coupon.discountPercentage,
         });
     } catch (error) {
-        console.log("Error in validateCoupon Controller", error.message);
+        console.error("Error in validateCoupon Controller", error.message);
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 }
