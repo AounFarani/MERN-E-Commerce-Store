@@ -127,15 +127,10 @@ export const refreshAccessToken = async (req, res) => {
     }
 }
 
-export const getUserProfile = async (req, res) => {
+export const getProfile = async (req, res) => {
     try {
-        const user = await User.findById(req.user._id).select("-password");
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        res.status(200).json(user);
+        res.json(req.user);
     } catch (error) {
-        console.error("Error in Get User Profile controller", error.message);
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: "Internal Server error", error: error.message });
     }
-}
+};

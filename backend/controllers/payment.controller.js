@@ -1,5 +1,5 @@
-import Order from "../models/order.model";
-import Coupon from "../models/coupon.model";
+import Order from "../models/order.model.js";
+import Coupon from "../models/coupon.model.js";
 import { stripe } from "../lib/stripe.js";
 
 export const createCheckoutSession = async (req, res) => {
