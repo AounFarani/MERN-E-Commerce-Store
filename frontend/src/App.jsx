@@ -6,7 +6,7 @@ import HomePage from "./pages/Home";
 import SignUpPage from "./pages/SignUp";
 import LogInPage from "./pages/LogIn"
 import AdminDashboard from "./pages/AdminDashboard";
-// import CategoryPage from "./pages/CategoryPage";
+import CategoryPage from "./pages/CategoryPage";
 // import CartPage from "./pages/CartPage";
 // import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 // import PurchaseCancelPage from "./pages/PurchaseCancelPage";
@@ -48,8 +48,11 @@ function App() {
             <Route path='/' element={!user ? <LogInPage /> : <HomePage />} />
             <Route path='/signup' element={!user ? <SignUpPage /> : <Navigate to='/' />} />
             <Route path='/login' element={!user ? <LogInPage /> : <Navigate to='/' />} />
-            <Route path='/secret-dashboard' element={user?.role === "admin" ? <AdminDashboard /> : <Navigate to='/login' />}
-            />
+            <Route path='/dashboard' element={user?.role === "admin" ? <AdminDashboard /> : <Navigate to='/login' />} />
+            <Route path='/category/:category' element={<CategoryPage />} />
+            {/* <Route path='/cart' element={user ? <CartPage /> : <Navigate to='/login' />} /> */}
+            {/* <Route path='/purchase-success' element={user ? <PurchaseSuccessPage /> : <Navigate to='/login' />} /> */}
+            {/* <Route path='/purchase-cancel' element={user ? <PurchaseCancelPage /> : <Navigate to='/login' />} /> */}
           </Routes>
         </div>
         <Toaster />

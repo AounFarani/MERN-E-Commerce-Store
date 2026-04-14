@@ -64,7 +64,7 @@ export const useUserStore = create((set, get) => ({
 
         set({ checkingAuth: true });
         try {
-            const response = await axios.get("/auth/refresh-token");
+            const response = await axios.post("/auth/refresh-token");
             set({ checkingAuth: false });
             return response.data;
         } catch (error) {
@@ -103,6 +103,7 @@ axios.interceptors.response.use(
             } catch (refreshError) {
                 // If the refresh token fails, log out the user
                 useUserStore.getState().logOut();
+                toast.error(refreshError.response.data.message || "Failed to refresh token");
                 return Promise.reject(refreshError);
             }
         }
